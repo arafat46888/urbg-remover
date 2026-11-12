@@ -1,0 +1,207 @@
+# Project: UrBG Remover
+## Complete Development & Deployment Prompt
+
+Build a complete, functional, self-hosted AI Background Removal API with a simple private admin dashboard.
+
+### 1. Project Overview
+Project Name: UrBG Remover
+
+Purpose:
+Create a personal AI-powered background removal server with an admin dashboard and API key management system.
+
+Hosting: Railway  
+Backend: Python 3.11 + FastAPI  
+AI Engine: rembg  
+Image Processing: Pillow + NumPy  
+Database: SQLite  
+Frontend: HTML + CSS + JavaScript  
+Deployment: Single Railway Service
+
+Everything must run inside one Railway service. Do not require separate hosting services.
+
+### 2. Admin Authentication
+
+Create a private admin login system.
+
+Admin Username: Arafat  
+Initial Master Password: ARARAFAT168642
+
+IMPORTANT: The intended master password is `ARAFAT168642`. Use this exact value.
+
+Security requirements:
+- Never expose the password in frontend JavaScript.
+- Read the password from the ADMIN_PASSWORD environment variable.
+- Use secure password verification.
+- Use HTTP-only, Secure, SameSite cookies.
+- Implement session expiration.
+- Implement login rate limiting.
+- Provide logout functionality.
+- Protect all admin routes.
+
+### 3. Admin Dashboard
+
+Create a modern, minimal, responsive dark dashboard.
+
+Navigation:
+1. Overview
+2. Background Remover
+3. API Keys
+4. API Documentation
+5. Integrations
+6. Usage Statistics
+7. Settings
+
+Overview:
+- Total processed images
+- Total API requests
+- Active API keys
+- Server status
+- AI engine status
+
+Background Remover:
+- Upload image
+- Drag and drop
+- Image preview
+- Remove background button
+- Before/after comparison
+- Transparent PNG preview
+- Download processed image
+
+API Keys:
+- Generate API key
+- Copy API key
+- Revoke API key
+- Display key creation date
+- Display last-used date
+- Track API usage
+
+Show the complete API key only once when generated. Store only its secure hash in the database.
+
+### 4. AI Background Removal Engine
+
+Use rembg with a lightweight compatible model initially.
+
+Requirements:
+- Remove image backgrounds.
+- Preserve foreground details.
+- Support transparent PNG output.
+- Handle JPG, JPEG, PNG and WebP.
+- Validate image dimensions.
+- Limit upload size to 5 MB initially.
+- Handle invalid images gracefully.
+- Process images in memory where possible.
+- Avoid permanent storage of uploaded images.
+
+Use CPU-compatible ONNX Runtime.
+
+### 5. REST API Endpoints
+
+Implement:
+
+GET /health
+GET /api/v1/status
+POST /api/v1/remove
+POST /api/v1/remove/url
+POST /api/v1/remove/base64
+POST /api/v1/remove/color
+GET /api/v1/usage
+
+Authentication:
+X-API-Key: YOUR_API_KEY
+
+Return appropriate HTTP status codes and JSON errors.
+
+For image removal, return a transparent PNG binary response by default.
+
+### 6. Integration Documentation
+
+Create complete copy-ready integration examples for:
+
+- PHP (cURL)
+- HTML + JavaScript (Fetch API)
+- React (TypeScript)
+- Flutter (Dart HTTP)
+- Python (Requests)
+
+Each integration must include:
+- API endpoint
+- Authentication header
+- Request example
+- Response handling
+- Error handling
+
+Never recommend exposing secret API keys in public frontend code. Explain secure backend proxy integration.
+
+### 7. Railway Deployment
+
+Provide:
+- requirements.txt
+- Dockerfile
+- railway.json
+- Environment variable configuration
+- Persistent Railway Volume configuration
+- SQLite initialization
+- AI model download and initialization strategy
+- Health check endpoint
+- Production startup command
+
+Required environment variables:
+
+ADMIN_USERNAME=Arafat
+ADMIN_PASSWORD=ARAFAT168642
+SECRET_KEY=generate-a-long-random-secret
+MAX_UPLOAD_MB=5
+
+Ensure persistent data is stored under the Railway Volume mount path.
+
+Do not depend on local temporary files for permanent data.
+
+### 8. UI Design
+
+Design requirements:
+- Modern dark theme
+- Minimal sidebar
+- Responsive desktop and mobile layouts
+- Professional dashboard
+- Smooth transitions
+- Clear notifications
+- Copy-to-clipboard buttons
+- Loading indicators
+- Clean image upload interface
+
+Avoid unnecessary animations and oversized components.
+
+### 9. Technical Requirements
+
+- No fake data.
+- No placeholder functionality.
+- No simulated AI processing.
+- No external background-removal API.
+- No subscription system.
+- No public registration.
+- No unnecessary services.
+- No Firebase or Supabase.
+- No paid API dependencies.
+
+All functions must work with the actual Python AI engine.
+
+### 10. Deliverables
+
+Generate the complete project source code.
+
+Include:
+1. Full project folder structure.
+2. Every required source file.
+3. Complete working backend.
+4. Complete responsive dashboard.
+5. Functional AI engine.
+6. Working API key manager.
+7. All five integration examples.
+8. Railway deployment configuration.
+9. Installation instructions.
+10. Local testing instructions.
+11. Railway deployment instructions.
+
+Before finalizing, validate imports, API routes, database initialization, authentication, image processing and deployment configuration.
+
+Do not stop after providing an architecture or tutorial. Build the complete working application.

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>UrBG Remover &middot; Dashboard</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- ------------------------------------------------------ sidebar -- -->
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="brand-mark">UB</div>
+          <div class="brand-text">
+            <strong>UrBG Remover</strong>
+            <span>AI Background API</span>
+          </div>
+        </div>
+
+        <nav class="nav" id="nav">
+          <div class="nav-label">Main</div>
+
+          <button class="nav-item active" data-section="overview">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" /><rect x="14" y="3" width="7" height="5" rx="1" /><rect x="14" y="12" width="7" height="9" rx="1" /><rect x="3" y="16" width="7" height="5" rx="1" /></svg>
+            <span>Overview</span>
+          </button>
+
+          <button class="nav-item" data-section="remover">
+            <svg viewBox="0 0 24 24"><path d="M4 16.5V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2.5" /><path d="m8 8-4 4 4 4" /><path d="m16 8 4 4-4 4" /><path d="M12 4v12" /></svg>
+            <span>Background Remover</span>
+          </button>
+
+          <button class="nav-item" data-section="keys">
+            <svg viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5" /><path d="m10.7 12.3 8.8-8.8" /><path d="m17 6 2.5 2.5" /><path d="m14.5 8.5 2.5 2.5" /></svg>
+            <span>API Keys</span>
+          </button>
+
+          <div class="nav-label">Reference</div>
+
+          <button class="nav-item" data-section="docs">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+            <span>API Documentation</span>
+          </button>
+
+          <button class="nav-item" data-section="integrations">
+            <svg viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 0 1 7 7h2" /><path d="M15 7h2a5 5 0 0 1 0 10h-2" /><path d="M8 12h8" /></svg>
+            <span>Integrations</span>
+          </button>
+
+          <button class="nav-item" data-section="stats">
+            <svg viewBox="0 0 24 24"><path d="M3 3v18h18" /><path d="M7 15l4-5 3 3 5-7" /></svg>
+            <span>Usage Statistics</span>
+          </button>
+
+          <div class="nav-label">System</div>
+
+          <button class="nav-item" data-section="settings">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
+            <span>Settings</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-chip">
+            <div class="avatar" id="user-avatar">A</div>
+            <div>
+              <div id="user-name">admin</div>
+              <div class="dim" style="font-size: 11px">Administrator</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-block" id="logout-button">Sign out</button>
+        </div>
+      </aside>
+
+      <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+      <!-- --------------------------------------------------------- main -- -->
+      <div class="main">
+        <header class="topbar">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+            </button>
+            <div>
+              <h1 id="page-title">Overview</h1>
+              <p id="page-subtitle">Service health and usage at a glance</p>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <span class="pill neutral" id="engine-pill"><span class="dot"></span> Engine: checking…</span>
+            <button class="btn btn-sm" id="refresh-button" title="Refresh data">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.64-6.36" /><path d="M21 3v6h-6" /></svg>
+              Refresh
+            </button>
+          </div>
+        </header>
+
+        <main class="content">
+          <!-- ================================================ overview == -->
+          <section class="section active" id="section-overview">
+            <div class="grid grid-4">
+              <div class="stat">
+                <span class="stat-label">Images processed</span>
+                <span class="stat-value" id="stat-images">—</span>
+                <span class="stat-meta" id="stat-images-meta">All time</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">API requests</span>
+                <span class="stat-value" id="stat-requests">—</span>
+                <span class="stat-meta" id="stat-requests-meta">All time</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Active API keys</span>
+                <span class="stat-value" id="stat-keys">—</span>
+                <span class="stat-meta" id="stat-keys-meta">—</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Avg. processing</span>
+                <span class="stat-value" id="stat-duration">—</span>
+                <span class="stat-meta">Per successful request</span>
+              </div>
+            </div>
+
+            <div class="grid grid-2" style="margin-top: 18px">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2>Service status</h2>
+                    <p>Runtime and AI engine information</p>
+                  </div>
+                  <span class="pill success" id="server-pill"><span class="dot"></span> Online</span>
+                </div>
+                <div id="server-details"><div class="empty">Loading…</div></div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2>AI engine</h2>
+                    <p>rembg / ONNX Runtime (CPU)</p>
+                  </div>
+                  <button class="btn btn-sm" id="warmup-button">Pre-load model</button>
+                </div>
+                <div id="engine-details"><div class="empty">Loading…</div></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2>Recent requests</h2>
+                  <p>The latest calls handled by this instance</p>
+                </div>
+                <button class="btn btn-sm btn-ghost" data-goto="stats">View all</button>
+              </div>
+              <div id="overview-requests"><div class="empty">Loading…</div></div>
+            </div>
+          </section>
+
+          <!-- ================================================= remover == -->
+          <section class="section" id="section-remover">
+            <div class="grid grid-2">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2>Upload an image</h2>
+                    <p id="remover-hint">JPG, JPEG, PNG or WebP — maximum 5 MB</p>
+                  </div>
+                </div>
+
+                <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload an image">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <path d="m7 9 5-5 5 5" />
+                    <path d="M12 4v12" />
+                  </svg>
+                  <strong>Drop an image here</strong>
+                  <span>or click to browse — JPG, PNG, WebP up to 5 MB</span>
+                </div>
+                <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" hidden />
+
+                <div class="file-meta" id="file-meta" hidden>
+                  <span id="file-name"></span>
+                  <span id="file-size"></span>
+                  <span id="file-dimensions"></span>
+                </div>
+
+                <hr class="sep" />
+
+                <div class="field">
+                  <label for="remover-format">Output format</label>
+                  <select id="remover-format">
+                    <option value="png">PNG (transparent)</option>
+                    <option value="webp">WebP (transparent)</option>
+                    <option value="jpeg">JPEG (white background)</option>
+                  </select>
+                </div>
+
+                <label class="checkbox">
+                  <input type="checkbox" id="remover-matting" />
+                  <span>Alpha matting (smoother edges, slower)</span>
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="remover-postprocess" />
+                  <span>Refine mask (guided filter)</span>
+                </label>
+
+                <div class="btn-row">
+                  <button class="btn btn-primary" id="remove-button" disabled>
+                    Remove background
+                  </button>
+                  <button class="btn" id="reset-button" disabled>Clear</button>
+                </div>
+
+                <div id="remover-progress" hidden style="margin-top: 14px">
+                  <div class="progress"><span></span></div>
+                  <p class="dim" style="margin: 8px 0 0; font-size: 12px">Running the AI model…</p>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2>Result</h2>
+                    <p>Original and transparent output</p>
+                  </div>
+                  <span class="pill neutral" id="result-meta" hidden></span>
+                </div>
+
+                <div class="preview-grid" id="preview-grid" hidden>
+                  <div class="preview-box">
+                    <header><span>Original</span><span class="dim" id="original-size"></span></header>
+                    <div class="canvas"><img id="original-image" alt="Original image" /></div>
+                  </div>
+                  <div class="preview-box">
+                    <header>
+                      <span>Background removed</span>
+                      <span class="dim" id="result-size"></span>
+                    </header>
+                    <div class="canvas"><img id="result-image" alt="Processed image" /></div>
+                  </div>
+                </div>
+
+                <div id="remover-empty" class="empty">
+                  Upload an image and press <strong>Remove background</strong> to see the result here.
+                </div>
+
+                <div class="btn-row" id="result-actions" hidden style="margin-top: 16px">
+                  <button class="btn btn-primary" id="download-button">Download PNG</button>
+                  <button class="btn" id="copy-image-button">Copy image</button>
+                  <button class="btn btn-ghost" id="new-image-button">Process another</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==================================================== keys == -->
+          <section class="section" id="section-keys">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2>API keys</h2>
+                  <p>Keys authenticate every call to the public API. The full key is shown only once.</p>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: flex-end">
+                  <div class="field" style="margin: 0">
+                    <label for="key-name">Key name</label>
+                    <input type="text" id="key-name" placeholder="e.g. Production website" style="width: 220px" />
+                  </div>
+                  <button class="btn btn-primary" id="create-key-button">Generate key</button>
+                </div>
+              </div>
+
+              <div id="new-key" hidden></div>
+
+              <div id="keys-table" style="margin-top: 16px"><div class="empty">Loading…</div></div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2>How to authenticate</h2>
+                  <p>Send the key in the <code>X-API-Key</code> header</p>
+                </div>
+                <button class="btn btn-sm" id="copy-curl-button">Copy curl example</button>
+              </div>
+              <div class="code-block">
+                <pre><code id="key-usage-example">curl -X POST https://your-app.up.railway.app/api/v1/remove \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -F "file=@photo.jpg" \
+  --output result.png</code></pre>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==================================================== docs == -->
+          <section class="section" id="section-docs">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2>REST API reference</h2>
+                  <p id="docs-base-url">Base URL</p>
+                </div>
+                <a class="btn btn-sm" href="/api/docs" target="_blank" rel="noopener">OpenAPI docs</a>
+              </div>
+              <div class="note">
+                Every endpoint except <code>/health</code> requires the
+                <code>X-API-Key</code> header. Responses are JSON errors with
+                <code>error.code</code> and <code>error.message</code>.
+              </div>
+              <div id="docs-list"><div class="empty">Loading…</div></div>
+            </div>
+          </section>
+
+          <!-- ============================================ integrations == -->
+          <section class="section" id="section-integrations">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2>Integration examples</h2>
+                  <p>Copy-ready snippets for the most common stacks</p>
+                </div>
+              </div>
+              <div class="note warning">
+                <strong>Never expose your API key in public front-end code.</strong>
+                Anything shipped to a browser (HTML/JS, React, Flutter) can be read by
+                anyone. Route those calls through your own backend and keep the key on
+                the server — see the <em>Secure Backend Proxy</em> example.
+              </div>
+              <div class="tabs" id="integration-tabs"></div>
+              <div id="integration-panels"><div class="empty">Loading…</div></div>
+            </div>
+          </section>
+
+          <!-- =================================================== stats == -->
+          <section class="section" id="section-stats">
+            <div class="grid grid-4">
+              <div class="stat">
+                <span class="stat-label">Requests (30d)</span>
+                <span class="stat-value" id="stat-period-requests">—</span>
+                <span class="stat-meta">Selected period</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Successful</span>
+                <span class="stat-value" id="stat-period-success">—</span>
+                <span class="stat-meta">2xx responses</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Failed</span>
+                <span class="stat-value" id="stat-period-failed">—</span>
+                <span class="stat-meta">4xx / 5xx responses</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Bandwidth out</span>
+                <span class="stat-value" id="stat-period-bytes">—</span>
+                <span class="stat-meta">Processed image bytes</span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2>Daily requests</h2>
+                  <p id="chart-period-label">Last 30 days</p>
+                </div>
+                <select id="chart-range" style="width: 150px">
+                  <option value="7">Last 7 days</option>
+                  <option value="30" selected>Last 30 days</option>
+                  <option value="90">Last 90 days</option>
+                </select>
+              </div>
+              <div class="chart" id="usage-chart"></div>
+              <div class="chart-labels" id="chart-labels"></div>
+            </div>
+
+            <div class="grid grid-2">
+              <div class="card">
+                <div class="card-header">
+                  <div><h2>Endpoints</h2><p>Traffic per route</p></div>
+                </div>
+                <div id="endpoint-breakdown"><div class="empty">Loading…</div></div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <div><h2>Request log</h2><p>Most recent API calls</p></div>
+                </div>
+                <div id="recent-requests"><div class="empty">Loading…</div></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ================================================ settings == -->
+          <section class="section" id="section-settings">
+            <div class="grid grid-2">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2>Processing defaults</h2>
+                    <p>Applied to the dashboard and new API calls</p>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="setting-upload">Maximum upload size (MB)</label>
+                  <input type="number" id="setting-upload" min="1" max="50" />
+                </div>
+
+                <div class="field">
+                  <label for="setting-model">AI model</label>
+                  <select id="setting-model"></select>
+                  <div class="hint">Larger models give better results but need more memory and time.</div>
+                </div>
+
+                <div class="field">
+                  <label for="setting-format">Default output format</label>
+                  <select id="setting-format">
+                    <option value="png">PNG (transparent)</option>
+                    <option value="webp">WebP (transparent)</option>
+                    <option value="jpeg">JPEG (white background)</option>
+                  </select>
+                </div>
+
+                <label class="checkbox">
+                  <input type="checkbox" id="setting-matting" />
+                  <span>Enable alpha matting by default</span>
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" id="setting-postprocess" />
+                  <span>Refine the mask by default</span>
+                </label>
+
+                <div class="btn-row" style="margin-top: 16px">
+                  <button class="btn btn-primary" id="save-settings-button">Save settings</button>
+                  <button class="btn" id="reload-model-button">Reload model</button>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <div><h2>Environment</h2><p>Read-only server configuration</p></div>
+                </div>
+                <div id="env-details"><div class="empty">Loading…</div></div>
+
+                <hr class="sep" />
+
+                <div class="card-header">
+                  <div><h2>Session</h2><p>Administrator access</p></div>
+                </div>
+                <div id="session-details"><div class="empty">Loading…</div></div>
+
+                <div class="btn-row" style="margin-top: 16px">
+                  <button class="btn btn-danger" id="logout-button-2">Sign out of this device</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast-stack" id="toast-stack"></div>
+    <script src="/assets/js/app.js"></script>
+  </body>
+</html>

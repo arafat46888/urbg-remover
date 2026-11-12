@@ -1,0 +1,27 @@
+# ---------------------------------------------------------------------------
+# UrBG Remover - Python dependencies
+# ---------------------------------------------------------------------------
+
+# Web framework
+fastapi==0.115.14
+uvicorn[standard]==0.34.3
+python-multipart==0.0.20
+pydantic==2.10.6
+
+# Session signing (secure, HTTP-only cookie sessions)
+itsdangerous==2.2.0
+
+# Image processing
+pillow==11.1.0
+numpy>=1.26,<2.2
+
+# HTTP client (used by POST /api/v1/remove/url)
+httpx==0.28.1
+
+# AI engine (background removal) + CPU ONNX runtime
+rembg==2.0.61
+onnxruntime==1.20.1
+
+# Tests
+pytest==8.3.4
+httpx==0.28.1

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Sign in &middot; UrBG Remover</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <main class="login-shell">
+      <section class="login-card">
+        <div class="login-brand">
+          <div class="brand-mark">UB</div>
+          <div>
+            <h1>UrBG Remover</h1>
+            <p>Private administration console</p>
+          </div>
+        </div>
+
+        <div id="login-error" class="login-error" role="alert"></div>
+
+        <form id="login-form" autocomplete="on">
+          <div class="field">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              autocomplete="username"
+              required
+              autofocus
+              placeholder="Admin username"
+            />
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="current-password"
+              required
+              placeholder="Admin password"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="login-button">
+            <span id="login-label">Sign in</span>
+          </button>
+        </form>
+
+        <p class="login-footer">
+          Session protected by a signed, HTTP-only cookie.<br />
+          Failed attempts are rate limited and locked out automatically.
+        </p>
+      </section>
+    </main>
+
+    <div class="toast-stack" id="toast-stack"></div>
+    <script src="/assets/js/login.js"></script>
+  </body>
+</html>
